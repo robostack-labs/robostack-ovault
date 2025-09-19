@@ -28,8 +28,8 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY
 const accounts: HttpNetworkAccountsUserConfig | undefined = MNEMONIC
     ? { mnemonic: MNEMONIC }
     : PRIVATE_KEY
-      ? [PRIVATE_KEY]
-      : undefined
+        ? [PRIVATE_KEY]
+        : undefined
 
 if (accounts == null) {
     console.warn(
@@ -55,19 +55,14 @@ const config: HardhatUserConfig = {
         ],
     },
     networks: {
-        'optimism-sepolia': {
-            eid: EndpointId.OPTSEP_V2_TESTNET,
-            url: process.env.RPC_URL_OPTIMISM_TESTNET || 'https://optimism-sepolia.gateway.tenderly.co',
+        'base-mainnet': {
+            eid: EndpointId.BASE_V2_MAINNET,
+            url: 'https://base.api.onfinality.io/public',
             accounts,
         },
-        'base-sepolia': {
-            eid: EndpointId.BASESEP_V2_TESTNET,
-            url: process.env.RPC_URL_BASE_TESTNET || 'https://base-sepolia.gateway.tenderly.co',
-            accounts,
-        },
-        'arbitrum-sepolia': {
-            eid: EndpointId.ARBSEP_V2_TESTNET,
-            url: process.env.RPC_URL_ARBITRUM_TESTNET || 'https://arbitrum-sepolia.gateway.tenderly.co',
+        'peaq-mainnet': {
+            eid: EndpointId.PEAQ_V2_MAINNET,
+            url: 'https://peaq.api.onfinality.io/public',
             accounts,
         },
         hardhat: {
